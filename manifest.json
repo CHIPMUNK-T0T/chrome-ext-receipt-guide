@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "ECサイト領収書ナビゲーター",
+  "version": "0.1.0",
+  "description": "Amazon.co.jp、楽天市場、Yahoo!ショッピングの領収書取得をサポートします",
+  "icons": {
+    "16": "public/icons/icon16.png",
+    "48": "public/icons/icon48.png",
+    "128": "public/icons/icon128.png"
+  },
+  "permissions": ["tabs", "scripting", "storage", "downloads"],
+  "host_permissions": [
+    "https://www.amazon.co.jp/*",
+    "https://order.my.rakuten.co.jp/*",
+    "https://odhistory.shopping.yahoo.co.jp/*"
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "ECサイト領収書ナビゲーター"
+  },
+  "background": {
+    "service_worker": "src/background/serviceWorker.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.co.jp/*",
+        "https://order.my.rakuten.co.jp/*",
+        "https://odhistory.shopping.yahoo.co.jp/*"
+      ],
+      "js": ["src/content/contentScript.ts"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "src/options/options.html"
+}

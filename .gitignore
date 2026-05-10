@@ -1,0 +1,11 @@
+# Dependencies (Local only)
+node_modules/
+
+# Build output (Generated from source)
+dist/
+
+# Local IDE/Tool settings
+.claude/
+.vscode/
+.DS_Store
+thumbs.db
